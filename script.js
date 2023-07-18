@@ -60,29 +60,18 @@ const posts = [
 //Recupero su js il container html
 const containerElement = document.getElementById("container")
 
-/* for (let i= 0; i < posts.length; i++){
+//Creo un array dove sono stampati gli ID dei post
+const postID=[]
+for (let i= 0; i < posts.length; i++){
     const singlePost = posts[i] 
     const singlePostId = singlePost.id
-    console.log(singlePostId);
-} */
-
-//Funzione per aggiornare gli Id dei post
-function updateId (){
-    for (let i= 0; i < posts.length; i++){
-        const singlePost = posts[i] 
-        const singlePostId = singlePost.id
-        return singlePostId
-    }
-
+    postID.push(singlePostId)
 }
-
 
 //Ciclo for per creare tanti post quanti sono nell'array posts
 for (let i = 0; i < posts.length; i++) {
 
-    //invoco la funzione per poi inserirla all'interno dell'inner.HTML
-    const postId = updateId()
-
+    const currentId = postID[i]
     //Creo il div container dei post social
     const postElement = document.createElement("div")
     postElement.classList.add("post")
@@ -107,7 +96,7 @@ for (let i = 0; i < posts.length; i++) {
 <div class="post__footer">
 <div class="likes js-likes">
     <div class="likes__cta">
-        <a class="like-button  js-like-button" href="#" data-postid="${postId}">
+        <a class="like-button  js-like-button" href="#" data-postid="${currentId}">
             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
             <span class="like-button__label">Mi Piace</span>
         </a>
