@@ -68,10 +68,64 @@ for (let i= 0; i < posts.length; i++){
     postID.push(singlePostId)
 }
 
+//Creo un array dove sono stampati i contenuti dei post
+const postContent=[]
+for (let i= 0; i < posts.length; i++){
+    const singlePost = posts[i] 
+    const singlePostContent = singlePost.content
+    postContent.push(singlePostContent)
+}
+
+//Creo un array dove sono stampate le foto dei post
+const postMedia=[]
+for (let i= 0; i < posts.length; i++){
+    const singlePost = posts[i] 
+    const singlePostMedia = singlePost.media
+    postMedia.push(singlePostMedia)
+}
+
+//Creo un array dove sono stampati i nomi autori dei post
+const postAuthorName =[]
+for (let i= 0; i < posts.length; i++){
+    const singlePost = posts[i] 
+    const singlePostAuthorName= singlePost.author.name
+    postAuthorName.push(singlePostAuthorName)
+}
+//Creo un array dove sono stampati le foto degli autori dei post
+const postAuthorPic =[]
+for (let i= 0; i < posts.length; i++){
+    const singlePost = posts[i] 
+    const singlePostAuthorPic= singlePost.author.image
+    postAuthorPic.push(singlePostAuthorPic)
+}
+
+//Creo un array dove sono stampati i likes dei post
+const postLikes =[]
+for (let i= 0; i < posts.length; i++){
+    const singlePost = posts[i] 
+    const singlePostLike= singlePost.likes
+    postLikes.push(singlePostLike)
+}
+
+//Creo un array dove sono stampate le date dei post
+const postDate =[]
+for (let i= 0; i < posts.length; i++){
+    const singlePost = posts[i] 
+    const singlePostDate= singlePost.created
+    postDate.push(singlePostDate)
+}
+
 //Ciclo for per creare tanti post quanti sono nell'array posts
 for (let i = 0; i < posts.length; i++) {
 
     const currentId = postID[i]
+    const currentContent = postContent[i]
+    const currentMedia = postMedia[i]
+    const currentAuthorName = postAuthorName[i]
+    const currentAuthorPic= postAuthorPic[i]
+    const currentLikes = postLikes[i]
+    const currentDate = postDate[i]
+
     //Creo il div container dei post social
     const postElement = document.createElement("div")
     postElement.classList.add("post")
@@ -81,17 +135,17 @@ for (let i = 0; i < posts.length; i++) {
     postElement.innerHTML = `<div class="post__header">
 <div class="post-meta">                    
     <div class="post-meta__icon">
-        <img class="profile-pic" src="" alt="">                    
+        <img class="profile-pic" src="${currentAuthorPic}" alt="">                    
     </div>
     <div class="post-meta__data">
-        <div class="post-meta__author"></div>
-        <div class="post-meta__time"></div>
+        <div class="post-meta__author">${currentAuthorName}</div>
+        <div class="post-meta__time">${currentDate}</div>
     </div>                    
 </div>
 </div>
-<div class="post__text"></div>
+<div class="post__text">${currentContent}</div>
 <div class="post__image">
-<img src="" alt="">
+<img src="${currentMedia}" alt="">
 </div>
 <div class="post__footer">
 <div class="likes js-likes">
@@ -102,7 +156,7 @@ for (let i = 0; i < posts.length; i++) {
         </a>
     </div>
     <div class="likes__counter">
-        Piace a <b id="like-counter-1" class="js-likes-counter"></b> persone
+        Piace a <b id="like-counter-1" class="js-likes-counter">${currentLikes}</b> persone
     </div>
 </div> 
 </div>`
