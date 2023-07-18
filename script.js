@@ -56,6 +56,58 @@ const posts = [
     }
 ];
 
-//Creo il div container dei post social
-const postElement = document.createElement("div")
-postElement.classList.add(".post")
+
+//Recupero su js il container html
+const containerElement = document.getElementById("container")
+
+//Recupero gli id dall'array dei post
+function updateId (){
+    for (let i= 0; i<posts.length; i++){
+        const singlePost = posts[i] 
+        const singlePostId = singlePost.id
+        return singlePostId
+    }
+
+}
+
+
+//Ciclo for per creare tanti post quanti sono nell'array posts
+for (let i = 0; i < posts.length; i++) {
+
+    //Creo il div container dei post social
+    const postElement = document.createElement("div")
+    postElement.classList.add("post")
+    containerElement.append(postElement)
+
+    //Aggiungo all'interno del container la struttura html del post
+    postElement.innerHTML = `<div class="post__header">
+<div class="post-meta">                    
+    <div class="post-meta__icon">
+        <img class="profile-pic" src="" alt="">                    
+    </div>
+    <div class="post-meta__data">
+        <div class="post-meta__author"></div>
+        <div class="post-meta__time"></div>
+    </div>                    
+</div>
+</div>
+<div class="post__text"></div>
+<div class="post__image">
+<img src="" alt="">
+</div>
+<div class="post__footer">
+<div class="likes js-likes">
+    <div class="likes__cta">
+        <a class="like-button  js-like-button" href="#" data-postid="">
+            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+            <span class="like-button__label">Mi Piace</span>
+        </a>
+    </div>
+    <div class="likes__counter">
+        Piace a <b id="like-counter-1" class="js-likes-counter"></b> persone
+    </div>
+</div> 
+</div>`
+
+}
+
